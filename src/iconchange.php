@@ -18,7 +18,7 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
 }
 
 //画像パス登録処理
-$hasCreated = UserLogic::changeImg($_SESSION['login_user']['user_id'], $upload . $timestamp);
+$hasCreated = UserLogic::changeImg($_SESSION['login_user']['user_id'], $upload);
 if (!$hasCreated) {
     $err[] = '登録に失敗しました';
 }
