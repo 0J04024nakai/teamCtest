@@ -13,7 +13,7 @@ $temp_fileImage = $_FILES['file']['name'] . $timestamp . $_SESSION['login_user']
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
-    $_SESSION['login_user']['icon_filename'] = $_FILES['file']['name'];
+    $_SESSION['login_user']['icon_filename'] = $temp_fileImage;
 } else {
     echo 'アップロード失敗';
 }
