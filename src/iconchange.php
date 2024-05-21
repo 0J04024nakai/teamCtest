@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'class/UserLogic.php';
+//時間取得
+$timestamp = time();
 
 $err = [];
 //画像パス登録処理
@@ -8,10 +10,9 @@ $hasCreated = UserLogic::changeImg($_SESSION['login_user']['user_id'], $_FILES['
 if (!$hasCreated) {
     $err[] = '登録に失敗しました';
 }
-//時間取得
-$timestamp = time();
+
 //ファイルの保存先
-$upload = 'img/' . $_FILES['file']['name'] . $timestamp . $_SESSION['login_user']['user_id'];
+$upload = 'img/' . $_FILES['file']['name'] . $timestamp . $_SESSION['user_id'];
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
