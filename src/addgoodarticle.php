@@ -19,9 +19,7 @@ require_once __DIR__ . '/class/goodArticle.php';
 $goodarticle = new goodarticle();
 $goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
-var_dump($goodflag['good']);
-
-if ($goodflag['good'] == 1) {
+if ($goodflag['good'] == "1") {
     $good = $good - 1;
     $goodflag = false;
     $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
