@@ -7,9 +7,9 @@ $timestamp = time();
 $err = [];
 
 //ファイルの保存先
-$upload = 'img/' . $_FILES['file']['name'] . $timestamp . $_SESSION['login_user']['user_id'];
+$upload = 'img/' . $timestamp . $_SESSION['login_user']['user_id'] . $_FILES['file']['name'];
 //ファイル名
-$temp_fileImage = $_FILES['file']['name'] . $timestamp . $_SESSION['login_user']['user_id'];
+$temp_fileImage =  $timestamp . $_SESSION['login_user']['user_id'] . $_FILES['file']['name'];
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
