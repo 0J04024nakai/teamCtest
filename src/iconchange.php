@@ -13,6 +13,11 @@ $temp_fileImage =  $timestamp . $_SESSION['login_user']['user_id'] . $_FILES['fi
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
+    //元の画像を削除(volume)
+    $file_to_delete = '/var/www/html/img/' . $_SESSION['login_user']['icon_filename'];
+    if (file_exists($file_to_delete)) {
+        unlink($file_to_delete);
+    }
     $_SESSION['login_user']['icon_filename'] = $temp_fileImage;
 } else {
     echo 'アップロード失敗';
