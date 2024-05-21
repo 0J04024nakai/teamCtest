@@ -9,7 +9,7 @@ if (!$hasCreated) {
     $err[] = '登録に失敗しました';
 }
 //ファイルの保存先
-$upload = 'img/' . $_FILES['file']['name'];
+$upload = 'img/' . $_FILES['file']['name'] . time() . $_SESSION['user_id'];
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
