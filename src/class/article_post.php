@@ -20,7 +20,7 @@ foreach ($main_texts as $main_text) {
     $parsed_main_text = $parsed_main_text . $main_text . "//";
 }
 
-require_once ('article.php');
+require_once('../class/article.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     require_once 'UserLogic.php';
@@ -34,8 +34,12 @@ if ($result) {
     $user_id = $login_user['user_id'];
 }
 $article_title = $_POST['article_title'];
-$tag = $_POST['tag'];
-$tag = str_replace(" ", "//", $tag);
+if (empty($tag)) {
+    $tag = 'なし';
+} else {
+    $tag = $_POST['tag'];
+    $tag = str_replace(" ", "//", $tag);
+}
 $Article = new article();
 if ($user_id == null) {
     header("Location:../warning.php");
@@ -43,5 +47,3 @@ if ($user_id == null) {
     $Article->_addarticle($user_id, $article_title, $parsed_title, $parsed_main_text, $tag);
     header("Location:../home.php");
 }
-
-?>

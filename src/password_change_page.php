@@ -26,7 +26,7 @@ include "header.php";
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link rel="stylesheet" href="css/mypage.css">
     <link rel="stylesheet" href="css/header.css">
     <title>mypage</title>
@@ -43,7 +43,6 @@ include "header.php";
             return true;
         }
     }
-
 </script>
 
 <body>
@@ -51,7 +50,7 @@ include "header.php";
         <div class="main-block-wrapper2">
             <div class="password">パスワード変更</div>
             <div id="alert">
-                <?php if (isset($login_err)): ?>
+                <?php if (isset($login_err)) : ?>
                     <p><?php echo $login_err; ?></p>
                 <?php endif; ?>
             </div>

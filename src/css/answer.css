@@ -75,6 +75,7 @@ a {
 .lines {
     height: 20rem;
     resize: none;
+    font-size: 20px;
 }
 
 .btn {
@@ -104,14 +105,15 @@ a {
 
 .w-20 {
     flex: 0 0 auto;
-    width: 20%;
+    width: fit-content;
 }
 
 .w-80 {
     flex: 0 0 auto;
-    width: 80%;
+    width: fit-content;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .bestw-80 {
@@ -121,13 +123,13 @@ a {
     align-items: center;
 }
 
-.bestw-80 i{
+.bestw-80 i {
     color: goldenrod;
     font-size: 25px;
     padding: 5px;
 }
 
-.bestText-container{
+.bestText-container {
     display: flex;
     flex-direction: column;
 }
@@ -203,7 +205,6 @@ a {
 
 .user-data {
     width: 40%;
-    flex-wrap: wrap;
     display: flex;
 }
 
@@ -234,7 +235,7 @@ a {
     font-weight: bold;
 }
 
-.bestAns-container{
+.bestAns-container {
     width: 100%;
     display: flex;
 }

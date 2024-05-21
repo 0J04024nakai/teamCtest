@@ -39,6 +39,13 @@ class article extends DbData
     $articles = $stmt->fetchAll();
     return $articles;
   }
+  public function allarticleJoinUser()
+  {
+    $sql = "select * from article inner join users on users.user_id = article.user_id ORDER BY created_at DESC";
+    $stmt = $this->query($sql, []);
+    $articles = $stmt->fetchAll();
+    return $articles;
+  }
 
   // 指定した記事を削除する
   public function deletearticle($article_id)

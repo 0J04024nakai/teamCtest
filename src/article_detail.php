@@ -37,7 +37,7 @@ array_pop($section_titles);
             <div class="row">
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
-                        <img src="" class="user-icon" onError="this.onerror=null;this.src='/img/user_icon.png'">
+                        <img src="" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -63,7 +63,7 @@ array_pop($section_titles);
                     <span class="star-avg">
                         記事平均評価
                         <?php
-                        echo $reviewAvg;
+                        echo round($reviewAvg, 2);
                         ?>
                     </span>
                 </div>
@@ -83,14 +83,14 @@ array_pop($section_titles);
                 echo ('
                 <div class="row">
                     <span class="main-text-title">
-                        ' . ($index + 1) . '.' . $section_titles[$index] .
+                        ' . ($index + 1) . '.' . htmlspecialchars($section_titles[$index]) .
                     '</span>
                 </div>
                 <hr>');
                 echo nl2br('
                 <div class="row">
                 <span class="main-text">
-                ' . $section_main_texts[$index] .
+                ' . htmlspecialchars($section_main_texts[$index]) .
                     '</span>
 
                 </div>
@@ -105,7 +105,7 @@ array_pop($section_titles);
                 echo '
             <div class="row">
                 <span class="main-text">
-                ' . ($index + 1) . '.' . $section_titles[$index] .
+                ' . ($index + 1) . '.' . htmlspecialchars($section_titles[$index]) .
                     '</span>
             </div>
             ';
@@ -126,14 +126,14 @@ array_pop($section_titles);
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
-                                <?php echo $comment['name'] ?>
+                                <?php echo htmlspecialchars($comment['name']) ?>
                             </span>
                         </div>
                     </div>
                     <div class="w-80">
                         <div class="text-wrap">
                             <span class="answer-text">
-                                <?php echo $comment['text'] ?>
+                                <?php echo htmlspecialchars($comment['text']) ?>
                             </span>
                         </div>
                     </div>

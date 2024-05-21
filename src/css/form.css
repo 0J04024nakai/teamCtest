@@ -65,6 +65,7 @@ div#alert p {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    border-radius: 0;
 }
 
 input[type='text'] {
@@ -93,10 +94,14 @@ input[type='password'] {
     font-weight: 400;
     font-style: normal;
     cursor: pointer;
+    border-radius: 0;
 }
 
 .cancel {
+    color: #000;
     background-color: white;
+    border-radius: 0;
+    border: 2px solid #000;
     width: 150px;
     height: 50px;
     font-family: "Kosugi Maru", sans-serif;

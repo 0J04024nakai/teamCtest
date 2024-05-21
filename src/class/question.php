@@ -57,7 +57,13 @@ class question extends DbData
     $questions = $stmt->fetchAll();
     return $questions;
   }
-
+  public function allquestionJoinUser()
+  {
+    $sql = "select * from question inner join users on users.user_id = question.user_id ORDER BY created_at DESC";
+    $stmt = $this->query($sql, []);
+    $questions = $stmt->fetchAll();
+    return $questions;
+  }
   //全ての質問を取ってくる(回答数順)
   public function allquestion_ans()
   {
