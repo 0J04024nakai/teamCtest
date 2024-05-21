@@ -19,15 +19,14 @@ require_once __DIR__ . '/class/goodArticle.php';
 $goodarticle = new goodarticle();
 $goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
-
-if ($goodflag['good']) {
+if ($goodflag['good'] == 1) {
     $good = $good - 1;
-    $goodflag = false;
-    $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
+    $goodflags = 0;
+    $goodarticle->goodupdate($goodflags, $login_user['user_id'], $articleid);
 } else {
     $good = $good + 1;
-    $goodflag = true;
-    $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
+    $goodflags = 1;
+    $goodarticle->goodupdate($goodflags, $login_user['user_id'], $articleid);
 }
 require_once __DIR__ . '/class/article.php';
 $article = new article();
