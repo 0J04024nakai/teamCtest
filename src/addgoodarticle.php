@@ -21,12 +21,10 @@ $goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
 if ($goodflag['good'] == 1) {
     $good = $good - 1;
-    var_dump("A"+$good);
     $goodflags = 0;
     $goodarticle->goodupdate($goodflags, $login_user['user_id'], $articleid);
 } else {
     $good = $good + 1;
-    var_dump("B"+$good);
     $goodflags = 1;
     $goodarticle->goodupdate($goodflags, $login_user['user_id'], $articleid);
 }
