@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '/class/UserLogic.php';
+require_once 'class/UserLogic.php';
 
 $user_id = 1;
 require_once __DIR__ . '/class/Product.php';
