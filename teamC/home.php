@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once 'class/UserLogic.php';
+require_once '/class/UserLogic.php';
 
 $user_id = 1;
-require_once __DIR__ . 'class/Product.php';
+require_once __DIR__ . '/class/Product.php';
 $product = new Product();
 $item = $product->getItem($user_id);
-require_once __DIR__ . 'class/question.php';
+require_once __DIR__ . '/class/question.php';
 $question = new question();
 $questions = $question->allquestionJoinUser(); //全ての質問を取ってくる
 
