@@ -19,6 +19,21 @@ if ($count != 0) {
     $reviewAvg = $reviewSum / $count;
 }
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    require_once 'UserLogic.php';
+}
+
+$result = UserLogic::checkLogin();
+
+$user_id = null;
+if ($result) {
+    $login_user = $_SESSION['login_user'];
+    $user_id = $login_user['user_id'];
+} else {
+    $login_user['name'] = 'ゲスト';
+}
+
 $Article = new article();
 $article_data = $Article->getArticleById($article_id);
 
@@ -30,6 +45,7 @@ array_pop($section_titles);
 
 ?>
 <link href="css/article_detail.css" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/star.css" rel="stylesheet">
 <div class="main-container margin-top">
     <div class="content-group">
@@ -38,7 +54,7 @@ array_pop($section_titles);
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
                         <img src="img/<?php echo $article_data['icon_filename'] ?>" class="user-icon"
-                            onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                            onError="this.onerror=null;this.src='img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -49,6 +65,7 @@ array_pop($section_titles);
                     </span>
                 </div>
                 <div class="tag-container">
+                
                     <?php
                     foreach ($tagList as $tag) {
                         echo '
@@ -67,6 +84,10 @@ array_pop($section_titles);
                         echo round($reviewAvg, 2);
                         ?>
                     </span>
+                    <?php
+                    if($article_data['user_id'] == $user_id)
+                    echo '<br><a href="article_update.php?article_id=',$article_id,'"><i class="fas fa-pen">編集</i></a>';
+                    ?>
                 </div>
             </div>
             <div class="row">
@@ -124,7 +145,7 @@ array_pop($section_titles);
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
                             <img src="img/<?php echo $comment['icon_filename'] ?>" class="user-icon"
-                                onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                                onError="this.onerror=null;this.src='img/user_icon.png'">
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">

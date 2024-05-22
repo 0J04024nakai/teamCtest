@@ -1,5 +1,5 @@
 <?php
-require_once('LoadIni.php');
+require_once ('LoadIni.php');
 class DbData  // DbDataクラスの宣言	
 {
     protected $pdo;  // PDOオブジェクト用のプロパティ（メンバ変数）の宣言						
@@ -10,10 +10,10 @@ class DbData  // DbDataクラスの宣言
         $loadIni = new LoadIni();
 
         // PDOオブジェクトを生成する 															
-        //$dsn = 'mysql:host=localhost;dbname=teamc;charset=utf8';
+        //$dsn = 'mysql:host=db;dbname=teamc;charset=utf8';
         //$user = 'kobe';
         //$password = 'denshi';
-        $dsn = 'mysql:host=db;dbname=' . $loadIni->DATABASE_NAME . ';charset=utf8';
+        $dsn = 'mysql:host=localhost;dbname=' . $loadIni->DATABASE_NAME . ';charset=utf8';
         $user = $loadIni->DATABASE_USERNAME;
         $password = $loadIni->DATABASE_PASSWORD;
         try {

@@ -15,24 +15,23 @@ if ($result) {
     $login_user['name'] = 'ゲスト';
 }
 
-require_once __DIR__.'/class/goodArticle.php';
+require_once __DIR__ . '/class/goodArticle.php';
 $goodarticle = new goodarticle();
-$goodflag = $goodarticle->goodarticles($login_user['user_id'],$articleid);
+$goodflag = $goodarticle->goodarticles($login_user['user_id'], $articleid);
 
 
-if($goodflag['good']){
+if ($goodflag['good']) {
     $good = $good - 1;
     $goodflag = false;
-    $goodarticle->goodupdate($goodflag,$login_user['user_id'],$articleid);
-}
-else{
+    $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
+} else {
     $good = $good + 1;
     $goodflag = true;
-    $goodarticle->goodupdate($goodflag,$login_user['user_id'],$articleid);
+    $goodarticle->goodupdate($goodflag, $login_user['user_id'], $articleid);
 }
 require_once __DIR__ . '/class/article.php';
 $article = new article();
-$article->goodarticle($good,$articleid);
+$article->goodarticle($good, $articleid);
 
 
-header("Location:/teamC/article.php");
+header("Location:article.php");

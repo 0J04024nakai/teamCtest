@@ -1,7 +1,7 @@
 <?php
 include "header.php";
-require_once ('../teamC/class/getQA.php');
-require_once ('../teamC/class/UserLogic.php');
+require_once ('class/getQA.php');
+require_once ('class/UserLogic.php');
 $userLogic = new UserLogic();
 $user_name = $userLogic->getUserById($question['user_id']);
 ?>
@@ -12,7 +12,7 @@ $user_name = $userLogic->getUserById($question['user_id']);
         <div class="user-data">
             <div class="w-20">
                 <img src="img/<?php echo $user_name['icon_filename'] ?>" class="user-icon"
-                    onError="this.onerror=null;this.src='../teamC/img/user_icon.png'">
+                    onError="this.onerror=null;this.src='img/user_icon.png'">
             </div>
             <div class="w-80">
                 <span class="name">
@@ -20,8 +20,8 @@ $user_name = $userLogic->getUserById($question['user_id']);
                 </span>
             </div>
         </div>
-        <form class="qusetion-form" method="post"
-            action="../teamC/class/editQuestion.php?question_id=<?= $question_id ?>" enctype="multipart/form-data">
+        <form class="qusetion-form" method="post" action="class/editQuestion.php?question_id=<?= $question_id ?>"
+            enctype="multipart/form-data">
             <?php
             echo '<textarea name="text" class="input lines">' . $question['text'] . '</textarea>';
             ?>
@@ -36,7 +36,7 @@ $user_name = $userLogic->getUserById($question['user_id']);
         <div class="row-answer">
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
-                    <img src="img/' . $answers['icon_filename'] . '" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="img/' . $answers['icon_filename'] . '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
                 <div class="name-wrap">
                     <span class="user-name">

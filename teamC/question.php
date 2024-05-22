@@ -19,28 +19,28 @@ include "header.php";
     } else {
         $login_user['name'] = 'ゲスト';
     }
-    if($user_id != null){
-    ?>
-    <form class="qusetion-form" method="post" action="../teamC/class/sendQuestion.php" enctype="multipart/form-data">
-        <?php }else{ ?>
-            <form class="qusetion-form" method="post" action="../teamC/warning.php" enctype="multipart/form-data">
+    if ($user_id != null) {
+        ?>
+        <form class="qusetion-form" method="post" action="class/sendQuestion.php" enctype="multipart/form-data">
+        <?php } else { ?>
+            <form class="qusetion-form" method="post" action="warning.php" enctype="multipart/form-data">
             <?php } ?>
-        <div class=" row">
-            <span class="label">質問内容</span>
-            <textarea class="input lines" name="text" required="required"></textarea>
-        </div>
-        <div class="row">
-            <span class="label">タグ・キーワード</span>
-            <input type="text" name="keyword">
-        </div>
-        <div class="row">
-            <span class="label">画像添付</span>
-            <input type="file" accept="image/*" class="input" name="image">
-        </div>
-        <div class="row">
-            <div class="content-end">
-                <button type="submit" class="btn">送信</button>
+            <div class=" row">
+                <span class="label">質問内容</span>
+                <textarea class="input lines" name="text" required="required"></textarea>
             </div>
-        </div>
-    </form>
+            <div class="row">
+                <span class="label">タグ・キーワード</span>
+                <input type="text" name="keyword">
+            </div>
+            <div class="row">
+                <span class="label">画像添付</span>
+                <input type="file" accept="image/*" class="input" name="image">
+            </div>
+            <div class="row">
+                <div class="content-end">
+                    <button type="submit" class="btn">送信</button>
+                </div>
+            </div>
+        </form>
 </div>

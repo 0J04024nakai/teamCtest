@@ -15,6 +15,12 @@ class article extends DbData
     $result = $this->exec($sql, [$userId, $article_title, $section_title, $section_text, $tag]);
   }
 
+  public function updatearticle($userId, $article_title, $section_title, $section_text, $tag,$article_id)
+  {
+    $sql = "update article set user_id = ?, article_title = ?, section_title = ?, section_text = ?, tag = ? where article_id = ?";
+    $result = $this->exec($sql, [$userId, $article_title, $section_title, $section_text, $tag,$article_id]);
+  }
+
   //指定したユーザーの記事を取得
   public function userarticle($userId)
   {
