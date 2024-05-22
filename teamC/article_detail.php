@@ -1,8 +1,8 @@
 <?php
 include "header.php";
 $article_id = $_GET['article_id'];
-require_once ('class/article.php');
-require_once ('class/article_comments.php');
+require_once('class/article.php');
+require_once('class/article_comments.php');
 $articleComment = new ArticleComment();
 $comments = $articleComment->SelectComment($article_id);
 $Allreview = $articleComment->getReviewById($article_id);
@@ -53,8 +53,7 @@ array_pop($section_titles);
             <div class="row">
                 <div class="w-20">
                     <div class="icon-wrap" alt="icon">
-                        <img src="img/<?php echo $article_data['icon_filename'] ?>" class="user-icon"
-                            onError="this.onerror=null;this.src='img/user_icon.png'">
+                        <img src="img/<?php echo $article_data['icon_filename'] ?>" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                     </div>
                 </div>
                 <div class="w-80">
@@ -65,7 +64,7 @@ array_pop($section_titles);
                     </span>
                 </div>
                 <div class="tag-container">
-                
+
                     <?php
                     foreach ($tagList as $tag) {
                         echo '
@@ -85,8 +84,8 @@ array_pop($section_titles);
                         ?>
                     </span>
                     <?php
-                    if($article_data['user_id'] == $user_id)
-                    echo '<br><a href="article_update.php?article_id=',$article_id,'"><i class="fas fa-pen">編集</i></a>';
+                    if ($article_data['user_id'] == $user_id)
+                        echo '<br><a href="article_update.php?article_id=', $article_id, '"><i class="fas fa-pen">編集</i></a>';
                     ?>
                 </div>
             </div>
@@ -140,12 +139,11 @@ array_pop($section_titles);
             <?php
             $count = 1;
             foreach ($comments as $comment) {
-                ?>
+            ?>
                 <div class="row">
                     <div class="w-20">
                         <div class="icon-wrap" alt="icon">
-                            <img src="img/<?php echo $comment['icon_filename'] ?>" class="user-icon"
-                                onError="this.onerror=null;this.src='img/user_icon.png'">
+                            <img src="img/<?php echo $comment['icon_filename'] ?>" class="user-icon" onError="this.onerror=null;this.src='img/user_icon.png'">
                         </div>
                         <div class="name-wrap">
                             <span class="user-name">
@@ -158,7 +156,7 @@ array_pop($section_titles);
                             <?php
                             if ($comment['review']) {
                                 echo '
-                                <div class="review">
+                                <div class="review-mini">
                                     <div class="stars-mini">
                                         <span class="stars-comment">
                                             ';
@@ -180,7 +178,7 @@ array_pop($section_titles);
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
@@ -193,16 +191,14 @@ array_pop($section_titles);
                         <span>
                             <input id="review01" type="radio" name="review" value="5"><label for="review01">★</label>
                             <input id="review02" type="radio" name="review" value="4"><label for="review02">★</label>
-                            <input id="review03" type="radio" name="review" value="3" required="required"><label
-                                for="review03">★</label>
+                            <input id="review03" type="radio" name="review" value="3" required="required"><label for="review03">★</label>
                             <input id="review04" type="radio" name="review" value="2"><label for="review04">★</label>
                             <input id="review05" type="radio" name="review" value="1"><label for="review05">★</label>
                         </span>
                     </div>
                 </div>
                 <div class="row">
-                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment"
-                        required="required"></textarea>
+                    <textarea class="comment-textarea" placeholder="コメントを入力" name="comment" required="required"></textarea>
                     <div class="content-end">
                         <button class="btn">送信</button>
                     </div>

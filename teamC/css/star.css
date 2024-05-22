@@ -6,6 +6,12 @@
     margin-bottom: 10px;
 }
 
+.review-mini {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .stars span {
     display: flex;
     /* 要素をフレックスボックスにする */
@@ -38,8 +44,6 @@
 
 .stars-mini span {
     display: flex;
-    justify-content: flex-end;
-    /* 逆順なので、左寄せにする */
 }
 
 .star-group {
