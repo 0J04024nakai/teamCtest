@@ -20,7 +20,7 @@ if (empty($_GET['search'])) {
     $hitFlag = false;
 } else {
     $searchWord = $_GET['search'];  //検索した際にsearchWordに持ってくる
-    $searchWord = mb_convert_kana($searchWord, 's');//全角スペースを半角にする
+    $searchWord = mb_convert_kana($searchWord, 's'); //全角スペースを半角にする
     $searchWords = explode(" ", $searchWord);   //スペース区切りで分割する
     $emptyFlag = false;
 }
@@ -41,18 +41,18 @@ if ($result) {
 ?>
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
 <link href="css/QandA.css" rel="stylesheet">
-<form action="../teamC/QandA.php" method="get" class="search margin-top">
+<form action="QandA.php" method="get" class="search margin-top">
     <input type="search" class="input" name="search" placeholder="キーワードを入力">
     <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
 </form>
-<form action="../teamC/QandA.php" method="post" class="sort">
+<form action="QandA.php" method="post" class="sort">
     <select name="sort">
         <option value="create" <?php if ($sort == "create" || $sort == null) {
-            echo "selected";
-        } ?>>作成順</option>
+                                    echo "selected";
+                                } ?>>作成順</option>
         <option value="anscount" <?php if ($sort == "anscount") {
-            echo "selected";
-        } ?>>回答数順</option>
+                                        echo "selected";
+                                    } ?>>回答数順</option>
         <input type="submit" value="送信">
     </select>
 </form>
@@ -66,7 +66,7 @@ if ($result) {
         $qtext = $ques['text'];
         $question_time = $ques['created_at']; //qusetionが作成された時間を取得
         if (Strlen($qtext) >= 80) {
-            $qtext = substr($qtext, 0, );
+            $qtext = substr($qtext, 0,);
             $qtext = $qtext . "...";
         }
         $tag = $ques['tag'];
@@ -95,7 +95,7 @@ if ($result) {
             <div class="w-20">
                 <div class="icon-wrap" alt="icon">
                     <a href="profile.php?user_id=', $ques['user_id'], '">
-                    <img src="img/', $ques['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'../teamC/img/user_icon.png\'">
+                    <img src="img/', $ques['icon_filename'], '" class="user-icon" onError="this.onerror=null;this.src=\'img/user_icon.png\'">
                 </div>
             </div>
             <div class="w-80">
