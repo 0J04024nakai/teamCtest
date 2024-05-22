@@ -1,26 +1,30 @@
 <?php
 session_start();
 require_once 'class/UserLogic.php';
-
+//時間取得
+$timestamp = time();
 $err = [];
-
-//画像パス登録処理
-$hasCreated = UserLogic::changeImg($_POST);
-
-if (!$hasCreated) {
-    $err[] = '登録に失敗しました';
-}
 //ファイルの保存先
-$upload = './img/' . $_FILES['file']['name'];
+$upload = 'img/' . $timestamp . $_SESSION['login_user']['user_id'] . $_FILES['file']['name'];
+//ファイル名
+$temp_fileImage =  $timestamp . $_SESSION['login_user']['user_id'] . $_FILES['file']['name'];
 //アップロードが正しく完了したかチェック
 if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     echo 'アップロード完了';
-    $_SESSION['login_user']['icon_filename'] = $_FILES['file']['name'];
+    //元の画像を削除(volume)
+    $file_to_delete = '/var/www/html/img/' . $_SESSION['login_user']['icon_filename'];
+    if (file_exists($file_to_delete)) {
+        unlink($file_to_delete);
+    }
+    $_SESSION['login_user']['icon_filename'] = $temp_fileImage;
 } else {
     echo 'アップロード失敗';
 }
-
-
+//画像パス登録処理
+$hasCreated = UserLogic::changeImg($_SESSION['login_user']['user_id'], $temp_fileImage);
+if (!$hasCreated) {
+    $err[] = '登録に失敗しました';
+}
 ?>
 
 <head>
@@ -28,7 +32,6 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     <title>登録情報変更</title>
     <link href="css/form.css" rel="stylesheet">
 </head>
-
 <?php
 include 'header.php';
 ?>
