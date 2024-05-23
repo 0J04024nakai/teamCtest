@@ -203,7 +203,7 @@ class UserLogic
      * @param array $userData
      * @return bool $result
      */
-    public static function changeImg($userData, $temp_fileImage)
+    public static function changeImg($userData)
     {
         $result = false;
         $sql = 'UPDATE users SET icon_filename = ? WHERE user_id = ?';
@@ -211,7 +211,7 @@ class UserLogic
         $arr = [];
         foreach ($_FILES as $fil) {
         }
-        $arr[] = $fil[$temp_fileImage];
+        $arr[] = $fil['full_path'];
         $arr[] = $userData['user_id'];
 
         try {
