@@ -212,7 +212,7 @@ class UserLogic
         foreach ($_FILES as $fil) {
         }
         $arr[] = $fil['full_path'];
-        $arr[] = $userData['user_id'];
+        $arr[] = (int)$userData['user_id'];
 
         try {
             $stmt = connect()->prepare($sql);
