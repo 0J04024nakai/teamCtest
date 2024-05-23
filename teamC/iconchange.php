@@ -18,6 +18,7 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $upload)) {
     }
     $_SESSION['login_user']['icon_filename'] = $temp_fileImage;
     var_dump($_SESSION['login_user']['icon_filename']);
+    var_dump($_SESSION['login_user']);
 } else {
     echo 'アップロード失敗';
 }
