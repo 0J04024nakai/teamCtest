@@ -9,7 +9,6 @@ services:
       - "8080:80"
     volumes:
       - ./teamC:/var/www/html
-      - ./teamC/img:/var/www/html/img
       - img_data:/var/www/html/img
     depends_on:
       - db
