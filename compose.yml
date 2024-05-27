@@ -9,7 +9,7 @@ services:
       - "8080:80"
     volumes:
       - ./teamC:/var/www/html
-      - img_data:/var/www/html/img
+      - ./teamC/img:/var/www/html/img
     depends_on:
       - db
   db:
@@ -44,7 +44,6 @@ services:
 volumes:
   db_data:
   conf_data:
-  img_data:
   
   # wordpress:
   #   image: wordpress:latest
